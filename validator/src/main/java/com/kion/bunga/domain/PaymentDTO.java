@@ -1,5 +1,6 @@
 package com.kion.bunga.domain;
 
+import com.kion.bunga.domain.Proto.Payment;
 import java.util.UUID;
 
 public class PaymentDTO extends PaymentRequest {
@@ -24,5 +25,15 @@ public class PaymentDTO extends PaymentRequest {
     String uid = UUID.randomUUID().toString() + "-" + System.currentTimeMillis();
     paymentDTO.setUid(uid);
     return paymentDTO;
+  }
+
+
+  public Proto.Payment toProto(){
+    return Payment.newBuilder()
+        .setReceiver(getReceiver())
+        .setSender(getSender())
+        .setAmount(getAmount())
+        .setUid(getUid())
+        .build();
   }
 }

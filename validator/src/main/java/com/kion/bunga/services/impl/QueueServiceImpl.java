@@ -1,10 +1,13 @@
 package com.kion.bunga.services.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kion.bunga.Main;
 import com.kion.bunga.domain.PaymentDTO;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 
@@ -13,6 +16,9 @@ public class QueueServiceImpl {
 
   private final ConnectionFactory connectionFactory;
   private Channel channel;
+
+
+  private static final Logger log = LoggerFactory.getLogger(QueueServiceImpl.class);
 
   public QueueServiceImpl(ConnectionFactory connectionFactory) {
     this.connectionFactory = connectionFactory;
@@ -28,8 +34,7 @@ public class QueueServiceImpl {
       Connection connection = connectionFactory.newConnection();
       return connection.createChannel();
     } catch (Exception e) {
-      e.printStackTrace();
-      //TODO log
+      log.error("Failed to connect to Rabbit. Queue disabled");
       return null;
     }
   }

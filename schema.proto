@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package com.kion.bunga.domain;
+
+option java_package = "com.kion.bunga.domain";
+option java_outer_classname = "Proto";
+option java_generic_services = true;
+
+
+message Payment {
+  string sender = 1;
+  string receiver = 2;
+  int64 amount = 3;
+  string uid = 4;
+}
+
+enum TRANSACTION_TYPE {
+  IBAN_TO_IBAN = 0;
+  IBAN_TO_WALLET = 1;
+  WALLET_TO_IBAN = 2;
+  WALLET_TO_WALLET = 3;
+}

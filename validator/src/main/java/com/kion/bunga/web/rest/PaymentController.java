@@ -23,13 +23,6 @@ public class PaymentController {
     this.paymentService = paymentService;
   }
 
-  @PostMapping("/payment")
-  public String create(@RequestBody @Valid PaymentRequest request) throws RestException {
-    return paymentService.create(request);
-  }
-
-  //TODO similar method with protobuf for intercommunication
-
   /**
    * setup request validator
    * @param binder
@@ -38,4 +31,12 @@ public class PaymentController {
   protected void initBinder(WebDataBinder binder) {
     binder.addValidators(new PaymentValidator());
   }
+
+
+  @PostMapping("/payment")
+  public String create(@RequestBody @Valid PaymentRequest request) throws RestException {
+    return paymentService.create(request);
+  }
+
+
 }
