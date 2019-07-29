@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: "Validator Service"
+server:
+  port: 8082
+
+application:
+  debugEnabled: true
+

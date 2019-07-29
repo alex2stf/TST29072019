@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: "Validator Service"
+server:
+  port: 8081
+
+application:
+  debugEnabled: true
+
+queue:
+  url: "amqp://localhost:5672/%2f"
+  username: "kion"
+  password: "bunga"
