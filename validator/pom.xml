@@ -20,15 +20,6 @@
       <version>${spring.boot.version}</version>
     </dependency>
 
-    <!--TESTING DEPENDENCIES:-->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-      <version>${spring.boot.version}</version>
-    </dependency>
-
-
     <dependency>
       <groupId>com.google.protobuf</groupId>
       <artifactId>protobuf-java</artifactId>
@@ -42,19 +33,21 @@
       <version>3.6.1</version>
     </dependency>
 
-
-    <!--<dependency>-->
-      <!--<groupId>com.h2database</groupId>-->
-      <!--<artifactId>h2</artifactId>-->
-      <!--<version>1.4.199</version>-->
-      <!--<scope>test</scope>-->
-    <!--</dependency>-->
-
     <dependency>
       <groupId>com.rabbitmq</groupId>
       <artifactId>amqp-client</artifactId>
       <version>5.6.0</version>
     </dependency>
+
+
+    <!--TESTING DEPENDENCIES:-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+      <version>${spring.boot.version}</version>
+    </dependency>
+
 
     <dependency>
       <groupId>junit</groupId>

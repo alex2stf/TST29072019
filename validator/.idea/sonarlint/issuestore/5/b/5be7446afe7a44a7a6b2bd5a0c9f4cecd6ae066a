@@ -1,5 +1,4 @@
 
-Rsquid:S1854";Remove this useless assignment to local variable "request".(…Í³´
-Csquid:S1481",Remove this unused "request" local variable.(…Í³´
-Nsquid:S1135"2Complete the task associated to this TODO comment.(ŒýƒÅúÿÿÿÿ
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ðõÁúÿÿÿÿ
+esquid:S1192("GDefine a constant instead of duplicating this literal "sender" 4 times.(ˆªúÀ8Ó»Ä-
+gsquid:S1192)"IDefine a constant instead of duplicating this literal "receiver" 4 times.(Õã¨ä8Ó»Ä-
+Zsquid:S2589K"7Remove this expression which always evaluates to "true"(‡þí´üÿÿÿÿ8Ó»Ä-

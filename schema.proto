@@ -10,8 +10,23 @@ option java_generic_services = true;
 message Payment {
   string sender = 1;
   string receiver = 2;
-  int64 amount = 3;
+  int32 amount = 3;
   string uid = 4;
+  string name = 5;
+  string descripton = 6;
+  TRANSACTION_TYPE transactionType = 7;
+}
+
+message TransactionResponse {
+  TRANSACTION_STATUS status = 1;
+  string message = 2;
+}
+
+enum TRANSACTION_STATUS {
+  DONE = 0;
+  DENIED = 1;
+  ALREADY_DONE = 2;
+  RETRY = 3;
 }
 
 enum TRANSACTION_TYPE {

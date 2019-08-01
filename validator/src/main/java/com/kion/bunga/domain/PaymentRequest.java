@@ -14,7 +14,29 @@ public class PaymentRequest {
   private Integer amount;
 
   @NotNull
+  private String name;
+
+  private String description;
+
+  @NotNull
   private TransactionType transactionType;
+
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
   public String getSender() {
     return sender;

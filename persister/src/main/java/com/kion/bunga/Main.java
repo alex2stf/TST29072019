@@ -7,8 +7,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
+import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
 
 @SpringBootApplication
 @ComponentScan
@@ -16,6 +19,12 @@ import org.springframework.core.env.Environment;
 public class Main {
 
   private static final Logger log = LoggerFactory.getLogger(Main.class);
+
+  @Bean
+  @Primary
+  ProtobufHttpMessageConverter protobufHttpMessageConverter() {
+    return new ProtobufHttpMessageConverter();
+  }
 
   public static void main(String[] args) throws UnknownHostException {
     SpringApplication app = new SpringApplication(Main.class);
@@ -36,14 +45,6 @@ public class Main {
         InetAddress.getLocalHost().getHostAddress(),
         env.getProperty("server.port"),
         env.getActiveProfiles());
-
-    Runtime.getRuntime().addShutdownHook(
-        new Thread("app-shutdown-hook") {
-          @Override
-          public void run() {
-            log.info("bye");
-          }
-        });
   }
 
 }

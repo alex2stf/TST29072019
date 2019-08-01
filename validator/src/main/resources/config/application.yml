@@ -7,13 +7,6 @@ server:
 application:
   debugEnabled: true
 
-     # neural-check: "0 0 9,12,15,18 * * *"
-  #    expiredDocsNotification: "0 0 * ? * *" #every hour
-  #    expiredDocsNotification: "0 * * ? * *" #every minute
-      #expiredDocsNotification: "0 0 1 * * ?" #every day at 1AM
-      #6:00 AM and 7:00 PM every day, see more configs at https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/scheduling/support/CronSequenceGenerator.html
-  #        neural-check: "*/2 * * * * *" #every 2 seconds
-
 queue:
   url: "amqp://localhost:5672/%2f"
   username: "kion"
@@ -26,4 +19,5 @@ persistence:
 
 
 crons:
-  retryCheck: "*/2 * * * * *"
+  retryCheck: "*/30 * * * * *"
+#  retryCheck: "0 0 1 * * ?" #every day at 1AM
