@@ -19,7 +19,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Base64Utils;
 import org.springframework.web.client.RestTemplate;
 
 @Service
@@ -37,16 +36,13 @@ public class PersistenceServiceImpl implements PersistenceService {
     this.queueService = queueService;
   }
 
-  @Override
-  public CompletableFuture<Boolean> persistAsync(PaymentDTO paymentDTO) {
-    return CompletableFuture.supplyAsync(() -> persist(paymentDTO));
-  }
 
 
 
 
-  public boolean persist(PaymentDTO paymentDTO){
+  public TransactionResponse persist(PaymentDTO paymentDTO){
 
+    TransactionResponse response = null;
     boolean success = true;
     String url = persistenceProperties.getUrl() + "/transaction";
     Message message = Convertors.toProto(paymentDTO);
@@ -55,14 +51,13 @@ public class PersistenceServiceImpl implements PersistenceService {
       HttpHeaders headers = new HttpHeaders();
       headers.setBasicAuth(persistenceProperties.getUsername(), persistenceProperties.getPassword());
       HttpEntity<Message> entity = new HttpEntity<>(message, headers);
-      TransactionResponse response = restTemplate.postForObject(url, entity, TransactionResponse.class);
+      response = restTemplate.postForObject(url, entity, TransactionResponse.class);
       if (response.getStatus().equals(TRANSACTION_STATUS.RETRY)){
         success = false;
       }
       log.info("transaction {} status {}", paymentDTO.getUid(), response.getStatus().name());
     } catch (Throwable ex){
       success = false;
-      ex.printStackTrace();
       log.error("transaction " + paymentDTO.getUid() + " failed because " + ex.getMessage(), ex);
     }
 
@@ -86,7 +81,7 @@ public class PersistenceServiceImpl implements PersistenceService {
       }
     }
 
-    return true;
+    return response;
   }
 
   public Set<PaymentDTO> getCached(){

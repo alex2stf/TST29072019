@@ -1,12 +1,11 @@
 package com.kion.bunga.services;
 
 import com.kion.bunga.domain.PaymentDTO;
+import com.kion.bunga.domain.Proto.TransactionResponse;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
 
 public interface PersistenceService {
 
-  CompletableFuture<Boolean> persistAsync(PaymentDTO paymentDTO);
-  boolean persist(PaymentDTO paymentDTO);
+  TransactionResponse persist(PaymentDTO paymentDTO);
   Set<PaymentDTO> getCached();
 }

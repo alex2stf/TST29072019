@@ -60,14 +60,14 @@ public class TransactionServiceImpl implements TransactionService {
     //first check for existence. This check should be cached
     if (transactionExists(payment.getUid())){
       transactionResponseBuilder.setStatus(TRANSACTION_STATUS.ALREADY_DONE)
-          .setMessage("transaction done");
+          .setMessage("TRANSACTION_DONE");
       return transactionResponseBuilder.build();
     }
 
     AccountWrapper wrapper = findParticipants(payment);
     if (wrapper == null){
       transactionResponseBuilder.setStatus(TRANSACTION_STATUS.DENIED)
-          .setMessage("participants not found");
+          .setMessage("PARTICIPANTS_NOT_FOUND");
       return transactionResponseBuilder.build();
     }
 

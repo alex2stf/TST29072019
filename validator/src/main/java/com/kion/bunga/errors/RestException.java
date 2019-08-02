@@ -2,7 +2,7 @@ package com.kion.bunga.errors;
 
 import org.springframework.http.HttpStatus;
 
-public abstract class RestException extends Exception {
+public abstract class RestException extends RuntimeException {
 
   private final HttpStatus status;
 
