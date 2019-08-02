@@ -37,6 +37,8 @@ server:
 
 application:
   debugEnabled: true
+  username: kion
+  password: bunga
 
 
 queue:

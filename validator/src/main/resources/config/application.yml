@@ -14,7 +14,7 @@ queue:
 
 persistence:
   url: "http://localhost:8082"
-  username: "validator-api"
+  username: "kion"
   password: "bunga"
 
 

@@ -1,4 +1,4 @@
 
-wsquid:UselessImportCheck"IRemove this unused import 'com.kion.bunga.domain.Proto.TRANSACTION_TYPE'.(¢Ùïòúÿÿÿÿ8äúØ¶Ä-
-Ysquid:UselessImportCheck"+Remove this unused import 'java.util.UUID'.(ÀãÄ£úÿÿÿÿ8Âªé¶Ä-
-hsquid:UselessImportCheck"@Remove this unused import 'com.kion.bunga.domain.Proto.Payment'.(ÂÑM8äúØ¶Ä-
+[squid:UselessImportCheck"+Remove this unused import 'java.util.UUID'.(ÀãÄ£úÿÿÿÿ8Âªé¶Ä-
+ysquid:UselessImportCheck"IRemove this unused import 'com.kion.bunga.domain.Proto.TRANSACTION_TYPE'.(¢Ùïòúÿÿÿÿ8äúØ¶Ä-
+jsquid:UselessImportCheck"@Remove this unused import 'com.kion.bunga.domain.Proto.Payment'.(ÂÑM8äúØ¶Ä-

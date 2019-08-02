@@ -15,8 +15,11 @@ import java.util.concurrent.CompletableFuture;
 import org.ehcache.Cache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Base64Utils;
 import org.springframework.web.client.RestTemplate;
 
 @Service
@@ -40,22 +43,26 @@ public class PersistenceServiceImpl implements PersistenceService {
   }
 
 
+
+
   public boolean persist(PaymentDTO paymentDTO){
-
-
 
     boolean success = true;
     String url = persistenceProperties.getUrl() + "/transaction";
     Message message = Convertors.toProto(paymentDTO);
 
     try {
-      TransactionResponse response = restTemplate.postForObject(url, message, TransactionResponse.class);
+      HttpHeaders headers = new HttpHeaders();
+      headers.setBasicAuth(persistenceProperties.getUsername(), persistenceProperties.getPassword());
+      HttpEntity<Message> entity = new HttpEntity<>(message, headers);
+      TransactionResponse response = restTemplate.postForObject(url, entity, TransactionResponse.class);
       if (response.getStatus().equals(TRANSACTION_STATUS.RETRY)){
         success = false;
       }
       log.info("transaction {} status {}", paymentDTO.getUid(), response.getStatus().name());
     } catch (Throwable ex){
       success = false;
+      ex.printStackTrace();
       log.error("transaction " + paymentDTO.getUid() + " failed because " + ex.getMessage(), ex);
     }
 

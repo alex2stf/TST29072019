@@ -25,3 +25,15 @@ m
 =src/main/java/com/kion/bunga/config/RestExceptionHandler.java,e/8/e8af3e365bdeb19068e021890dd6c9e3eb1f6c28
 j
 :src/main/java/com/kion/bunga/config/ApplicationConfig.java,6/4/649d03806f60d9c80ab02cf86ebbf6239133784d
+h
+8src/main/java/com/kion/bunga/config/QueueProperties.java,a/f/af5d0a2116f6d9c6c52b66ecdd33a86cdcf8f945
+d
+4src/main/java/com/kion/bunga/config/QueueConfig.java,d/0/d007a6f20a294c594742f29dce4daed26a226a1c
+c
+3src/main/java/com/kion/bunga/domain/PaymentDTO.java,4/3/4324158b5cd3cc9f1caaea77040f69c3cb5a68be
+c
+3src/main/java/com/kion/bunga/domain/Convertors.java,3/6/36e4283d9cf7bd1db712d94ea1dd5ae8d76498ff
+p
+@src/main/java/com/kion/bunga/web/rest/TransactionController.java,e/b/eb56f8810c2b754b7aca80142af1f45209621a41
+e
+5src/main/java/com/kion/bunga/tasks/QueueConsumer.java,0/6/0641e1ea30332fac86683f54d9f74537f92f036b

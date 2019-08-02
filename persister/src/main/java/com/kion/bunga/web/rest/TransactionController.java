@@ -1,6 +1,7 @@
 package com.kion.bunga.web.rest;
 
 
+import com.kion.bunga.config.Authorized;
 import com.kion.bunga.domain.Proto;
 import com.kion.bunga.services.TransactionService;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ public class TransactionController {
     this.transactionService = transactionService;
   }
 
+  @Authorized
   @PostMapping(value = "/transaction", consumes = "application/x-protobuf", produces = "application/x-protobuf")
   public ResponseEntity<Proto.TransactionResponse> createTransaction(@RequestBody Proto.Payment payment){
     return new ResponseEntity<>(transactionService.save(payment), HttpStatus.OK);

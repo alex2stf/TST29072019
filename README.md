@@ -1,5 +1,5 @@
 # TST29072019
 
-basic payment test spring app
+basic payment proof of concept spring app
 
 
