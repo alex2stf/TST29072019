@@ -52,9 +52,6 @@ public class PersistenceServiceImpl implements PersistenceService {
       headers.setBasicAuth(persistenceProperties.getUsername(), persistenceProperties.getPassword());
       HttpEntity<Message> entity = new HttpEntity<>(message, headers);
       response = restTemplate.postForObject(url, entity, TransactionResponse.class);
-      if (response.getStatus().equals(TRANSACTION_STATUS.RETRY)){
-        success = false;
-      }
       log.info("transaction {} status {}", paymentDTO.getUid(), response.getStatus().name());
     } catch (Throwable ex){
       success = false;

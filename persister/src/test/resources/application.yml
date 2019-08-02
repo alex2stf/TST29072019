@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:file:~/test
+    username: sa
+    password:
+    hikari:
+      leak-detection-threshold: 10000
+      maximum-pool-size: 20
+      minimumIdle: 4
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+    show-sql: true
+    properties:
+      hibernate.id.new_generator_mappings: true
+      hibernate.cache.use_second_level_cache: false
+      hibernate.cache.use_query_cache: false
+      hibernate.generate_statistics: true
+      hibernate.jdbc.lob.non_contextual_creation: true
+
+application:
+  debugEnabled: true
+  username: kion
+  password: bunga
+
+
+queue:
+  url: "test"
+  username: "test"
+  password: "test"
+
